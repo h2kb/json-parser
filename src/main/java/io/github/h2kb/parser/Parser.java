@@ -9,18 +9,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-import java.util.List;
-
 public class Parser {
     private Gson gson = new Gson();
 
     public void parse(File file) throws FileNotFoundException {
         FileReader reader = new FileReader(file);
 
-        Cars cars = gson.fromJson(reader, Cars.class);
-        List<Car> carArrays = cars.getArr();
+        Car[] cars = gson.fromJson(reader, Cars.class).cars;
 
-        for (Car car : carArrays) {
+        for (Car car : cars) {
             System.out.println(car);
         }
     }
